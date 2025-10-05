@@ -1,0 +1,44 @@
+
+services:
+  db:
+    image: postgres:16
+    container_name: teammidi_db
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: app
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+      - ./team-midi-back/init.sql:/docker-entrypoint-initdb.d/00_init.sql:ro
+    restart: unless-stopped
+    networks: [appnet]
+
+  back:
+    build:
+      context: ./team-midi-back
+    container_name: teammidi_back
+    env_file:
+      - ./team-midi-back/.env.docker
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    networks: [appnet]
+
+  front:
+    build:
+      context: ./team-midi-front
+    container_name: teammidi_front
+    depends_on:
+      - back
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    networks: [appnet]
+
+networks:
+  appnet: {}
+
+volumes:
+  dbdata: {}
