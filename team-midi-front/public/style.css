@@ -1,0 +1,371 @@
+/* === Layout général === */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+header {
+  background: #0038A8;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header img {
+  height: 40px;
+  margin-right: 1rem;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+main {
+  padding: 2rem;
+}
+
+/* === Inputs, forms, boutons === */
+input, select, textarea, button {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0.5rem 0;
+  padding: 0.8rem;
+  font: inherit;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #0038A8;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background-color: #002a82;
+}
+
+form {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* === Modales === */
+#modal, #modalInfo, #modalCompetitionEdit {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  z-index: 1000;
+  max-width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+
+.hidden {
+  display: none;
+}
+
+/* === Planning FullCalendar === */
+#calendar {
+  width: 100%;
+  max-width: none;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  font-size: 1rem; /* Agrandir texte global */
+}
+
+.fc-toolbar {
+  margin-bottom: 0.3rem;
+}
+
+.fc-toolbar-title {
+  font-size: 1.4rem !important;
+  font-weight: bold;
+  color: #0038A8;
+}
+
+.fc-col-header-cell-cushion {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0038A8;
+  padding: 6px 0;
+}
+
+.fc-event-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.fc-event {
+  border: none;
+  padding: 2px 6px;
+  margin: 2px 0;
+  border-radius: 5px;
+}
+
+.fc-event:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 0 4px rgba(0,0,0,0.15);
+}
+
+.fc-daygrid-day-frame {
+  min-height: 15px !important;
+  padding: 2px;
+}
+
+.fc-scroller-liquid-absolute {
+  height: auto !important;
+}
+
+/* === Notifications WebSocket === */
+#notifBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background-color: #0038A8;
+  color: white;
+  text-align: center;
+  z-index: 10000;
+}
+
+/* === Boutons toggle (action rapide) === */
+.action-btn {
+  margin: 1rem 0;
+  background: #0038A8;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.action-btn:hover {
+  background: #002a82;
+}
+
+#modalFeedbackSeance {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  z-index: 9999;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+#modalSeanceDetail, #modalFeedback {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  z-index: 9999;
+  max-width: 400px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.feedback {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.feedback h4 {
+  margin-top: 0;
+}
+
+.back-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #0038A8;
+  text-decoration: underline;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#modalCompetition {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  z-index: 9999;
+  max-width: 400px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+  /* === Page d'accueil === */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(to bottom right, #e3f0ff, #ffffff);
+}
+
+.home-logo {
+  width: 120px;
+  margin-bottom: 1rem;
+}
+
+.home-title {
+  font-size: 2rem;
+  color: #0038A8;
+  margin-bottom: 1rem;
+}
+
+.home-subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.home-btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home-btn {
+  background-color: #0038A8;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.home-btn:hover {
+  background-color: #002a82;
+}
+
+/* === Mode sombre automatique === */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #f0f0f0;
+  }
+
+  header {
+    background: #1f1f1f;
+    color: white;
+  }
+
+  form, #modal, #modalInfo, #modalCompetitionEdit, #calendar, .feedback {
+    background: #1e1e1e;
+    color: #eee;
+    border: 1px solid #333;
+  }
+
+  input, select, textarea {
+    background: #2a2a2a;
+    color: white;
+    border: 1px solid #444;
+  }
+
+  button {
+    background-color: #3366cc;
+  }
+
+  button:hover {
+    background-color: #264a99;
+  }
+
+  .action-btn {
+    background-color: #3366cc;
+  }
+
+  .action-btn:hover {
+    background-color: #264a99;
+  }
+
+  .fc-toolbar-title, .fc-col-header-cell-cushion, .fc-event-title {
+    color: #cce2ff !important;
+  }
+
+  #notifBar {
+    background-color: #3366cc;
+  }
+
+  #modalSeanceDetail, #modalFeedback {
+  background: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #444;
+  }
+
+  #modalFeedbackSeance {
+  background: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #444;
+  }
+
+  #contenuModalFeedbackSeance p {
+    color: #ccc;
+  }
+
+  #modalCompetition {
+  background: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #444;
+  }
+
+  .home-container {
+    background: linear-gradient(to bottom right, #1e1e1e, #2c2c2c);
+  }
+
+  .home-title {
+    color: #cce2ff;
+  }
+
+  .home-subtitle {
+    color: #bbb;
+  }
+
+  .home-btn {
+    background-color: #3366cc;
+    color: white;
+  }
+
+  .home-btn:hover {
+    background-color: #264a99;
+  }
+}

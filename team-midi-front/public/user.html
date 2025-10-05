@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Espace athlète</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="logo.png">
+</head>
+<body>
+  <div id="notifBar" class="hidden"></div>
+
+  <header>
+    <div style="display: flex; align-items: center;">
+      <img src="logo.png" alt="Logo" />
+      <h1>Espace athlète</h1>
+    </div>
+    <button id="logoutBtn" class="action-btn">Déconnexion</button>
+  </header>
+
+  <main>
+    <div id="calendar"></div>
+  </main>
+
+  <!-- Modale détail séance -->
+  <div id="modalSeanceDetail" class="hidden">
+    <h3 id="seanceTitre"></h3>
+    <p id="seanceDescription"></p>
+    <button onclick="ouvrirFeedback()">Donner un feedback</button>
+    <button onclick="fermerModalDetail()">Fermer</button>
+  </div>
+
+  <!-- Modale feedback -->
+  <div id="modalFeedback" class="hidden">
+    <h3>Laisser un feedback</h3>
+    <textarea id="commentaire" placeholder="Commentaire"></textarea><br><br>
+    <input type="number" id="effort" min="0" max="10" step="0.5" placeholder="Cote d'effort (0-10)"><br><br>
+    <input type="url" id="lienActivite" placeholder="Lien de l'activité (Garmin, Coros...)"><br><br>
+    <button onclick="envoyerFeedback()">Envoyer</button>
+    <button onclick="fermerModal()">Annuler</button>
+  </div>
+
+  <!-- Modale pour compétition -->
+  <div id="modalCompetition" class="hidden">
+    <h3 id="modalCompetitionTitre"></h3>
+    <p id="modalCompetitionDescription"></p>
+    <button onclick="fermerModalCompetition()">Fermer</button>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+  <script type="module" src="user.js?v=3"></script>
+</body>
+</html>

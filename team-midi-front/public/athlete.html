@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Planning de l'athlète</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="logo.png">
+</head>
+<body>
+  <header>
+    <div style="display: flex; align-items: center;">
+      <img src="logo.png" alt="Logo" />
+      <h1 id="athleteNom">Planning de l'athlète</h1>
+    </div>
+  </header>
+
+  <main>
+    <div id="calendar"></div>
+  </main>
+
+  <!-- Modale pour feedback d'une séance -->
+  <div id="modalFeedbackSeance" class="hidden">
+    <h3>Feedback pour la séance</h3>
+    <div id="contenuModalFeedbackSeance"></div>
+    <button onclick="fermerModalFeedbackSeance()">Fermer</button>
+  </div>
+
+  <!-- Modale pour compétition -->
+  <div id="modalCompetition" class="hidden">
+    <h3 id="modalCompetitionTitre"></h3>
+    <p id="modalCompetitionDescription"></p>
+    <button onclick="fermerModalCompetition()">Fermer</button>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+  <script type="module" src="athlete.js?v=10"></script>
+</body>
+</html>

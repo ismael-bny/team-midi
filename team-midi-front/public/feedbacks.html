@@ -1,0 +1,57 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Feedbacks de la séance</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="logo.png">
+</head>
+<body>
+  <header>
+    <div style="display: flex; align-items: center;">
+      <img src="logo.png" alt="Logo" />
+      <h1>Feedbacks de la séance</h1>
+    </div>
+    <a href="admin.html" class="action-btn">← Retour coach</a>
+  </header>
+
+  <main style="padding: 2rem;">
+    <div id="feedbackList">Chargement...</div>
+  </main>
+
+  <script type="module">
+    import { API_URL } from "./config.mjs";
+
+    const params = new URLSearchParams(window.location.search);
+    const id_seance = params.get("id_seance");
+
+    async function chargerFeedbacks() {
+      const res = await fetch(`${API_URL}/feedbacks?id_seance=${id_seance}`);
+      const feedbacks = await res.json();
+      const container = document.getElementById("feedbackList");
+
+      if (!feedbacks.length) {
+        container.textContent = "Aucun feedback pour cette séance.";
+        return;
+      }
+
+      container.innerHTML = "";
+      feedbacks.forEach(f => {
+        const div = document.createElement("div");
+        div.className = "feedback";
+        div.innerHTML = `
+          <h4>${f.nom} ${f.prenom}</h4>
+          <p><strong>Commentaire :</strong> ${f.commentaire || "(aucun)"}</p>
+          <p><strong>Cote d'effort :</strong> ${f.cote_effort ?? "(non précisée)"}</p>
+          ${f.lien_activite ? `<p><a href="${f.lien_activite}" target="_blank">Voir l'activité</a></p>` : ""}
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    chargerFeedbacks();
+  </script>
+</body>
+</html>

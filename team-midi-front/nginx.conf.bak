@@ -1,0 +1,22 @@
+server {
+  listen 80;
+  server_name _;
+
+  root /usr/share/nginx/html;
+  index index.html;
+
+  types {
+    text/html html htm;
+    text/css css;
+    application/javascript js mjs;
+    image/png png;
+    image/svg+xml svg;
+    image/jpeg jpg jpeg;
+    font/woff woff;
+    font/woff2 woff2;
+  }
+
+  location / {
+    try_files $uri $uri/ =404;
+  }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Espace coach</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="logo.png">
+</head>
+<body>
+  <header>
+    <div style="display: flex; align-items: center;">
+      <img src="logo.png" alt="Logo" />
+      <h1>Team Middle Distance – Coach</h1>
+    </div>
+    <button id="logoutBtn" class="action-btn">Déconnexion</button>
+  </header>
+
+  <main>
+    <button class="action-btn" onclick="document.getElementById('gestionGroupe').classList.toggle('hidden')">
+      Gestion de groupe
+    </button>
+
+    <section id="gestionGroupe" class="hidden">
+      <h2>Créer un groupe</h2>
+      <input type="text" id="groupName" placeholder="Nom du groupe" />
+      <button class="action-btn" onclick="creerGroupe()">Créer</button>
+
+      <h2>Mes groupes</h2>
+      <ul id="mesGroupes"></ul>
+
+      <h2>Ajouter un athlète</h2>
+      <select id="groupeSelect"></select>
+      <input type="text" id="rechercheAthlete" placeholder="Nom, email ou login" />
+      <button class="action-btn" onclick="rechercherAthletes()">Rechercher</button>
+      <ul id="resultatsRecherche"></ul>
+    </section>
+
+    <button class="action-btn" onclick="document.getElementById('gestionCompetitions').classList.toggle('hidden')">
+      Créer une compétition
+    </button>
+
+    <section id="gestionCompetitions" class="hidden">
+      <h2>Créer une compétition</h2>
+      <form id="competitionForm">
+        <input type="text" name="nom" placeholder="Nom" required>
+        <input type="date" name="date" required>
+        <input type="text" name="ville" placeholder="Ville" required>
+        <input type="text" name="niveau" placeholder="Niveau" required>
+        <input type="text" name="type" placeholder="Type" required>
+        <h4>Sélectionner un groupe</h4>
+        <select name="id_groupe" id="groupeSelectCompetition" required></select>
+        <button class="action-btn" type="submit">Créer</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Planning</h2>
+      <div id="calendar"></div>
+    </section>
+  </main>
+
+  <!-- Modale création/modif séance -->
+  <div id="modal" class="hidden">
+    <h3>Nouvelle séance</h3>
+    <input type="text" id="titreSeance" placeholder="Titre"><br><br>
+    <textarea id="descSeance" placeholder="Description"></textarea><br><br>
+    <h4>Sélectionner un groupe</h4>
+    <select id="groupeSelectModal"></select><br><br>
+    <button onclick="enregistrerSeance()">Enregistrer</button>
+    <button onclick="document.getElementById('modal').classList.add('hidden')">Annuler</button>
+  </div>
+
+  <!-- Modale info événement -->
+  <div id="modalInfo" class="hidden">
+    <h3 id="modalInfoTitre"></h3>
+    <p id="modalInfoDescription"></p>
+    <div id="modalInfoButtons"></div>
+    <button onclick="fermerModalInfo()">Fermer</button>
+  </div>
+
+  <!-- Modale modification compétition -->
+  <div id="modalCompetitionEdit" class="hidden">
+    <h3>Modifier une compétition</h3>
+    <input type="text" id="editNomComp" placeholder="Nom"><br><br>
+    <input type="date" id="editDateComp"><br><br>
+    <input type="text" id="editVilleComp" placeholder="Ville"><br><br>
+    <input type="text" id="editNiveauComp" placeholder="Niveau"><br><br>
+    <input type="text" id="editTypeComp" placeholder="Type"><br><br>
+    <select id="editGroupeComp"></select><br><br>
+    <button onclick="validerModificationCompetition()">Valider</button>
+    <button onclick="fermerModalCompetition()">Annuler</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+  <script type="module" src="admin.js?v=3"></script>
+</body>
+</html>
